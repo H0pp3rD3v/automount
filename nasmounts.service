@@ -1,0 +1,14 @@
+[Unit]
+Description=Automate NAS Mount and Dismount
+After=network.target network-online.target
+Requires=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/USER_NAME/Tools/.automount/init.sh
+ExecReload=/home/USER_NAME/Tools/.automount/renew.sh
+ExecStop=/home/USER_NAME/Tools/.automount/die.sh
+RemainAfterExit=True
+
+[Install]
+WantedBy=default.target
